@@ -1,15 +1,19 @@
 from django.db import models
 from django.db.models.fields import CharField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
+from .constants import PaymentStatus
 
 # Create your models here.
 class Order(models.Model):
     name = CharField(_("Customer Name"), max_length=254, blank=False, null=False)
     amount = models.FloatField(_("Amount"), null=False, blank=False)
-    phone_number = models.CharField(
-        _("Phone Number"), max_length=15, blank=True, null=True
+    status = CharField(
+        _("Payment Status"),
+        default=PaymentStatus.PENDING,
+        max_length=254,
+        blank=False,
+        null=False,
     )
-    status = CharField(_("Payment Status"), max_length=254, blank=False, null=False)
     provider_order_id = models.CharField(
         _("Order ID"), max_length=40, null=False, blank=False
     )
