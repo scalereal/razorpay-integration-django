@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <form method="POST">
-    <button id="rzp-button1" style="margin-left:50%;">Pay</button>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
     var options = {
-        key: "rzp_test_38aTzDAPFLnH0Y", // Enter the Key ID generated from the Dashboard
+        key: "rzp_test_38aTzDAPFLnH0Y",
         amount: "500", 
         currency: "INR",
         name: "Payment Corp",
@@ -27,19 +26,7 @@
         }
     };
     var rzp1 = new Razorpay(options);
-    {% comment %} rzp1.on('payment.failed', function (response){
-            alert(response.error.code);
-            alert(response.error.description);
-            alert(response.error.source);
-            alert(response.error.step);
-            alert(response.error.reason);
-            alert(response.error.metadata.order_id);
-            alert(response.error.metadata.payment_id);
-    }); {% endcomment %}
-    document.getElementById('rzp-button1').onclick = function(e){
-        rzp1.open();
-        e.preventDefault();
-    }
+    rzp1.open();
     </script>
     <input type="hidden" custom="Hidden Element" name="hidden">
 </form>

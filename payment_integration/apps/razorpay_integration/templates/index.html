@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    .desc a{
+        text-decoration: none;
+        background-color: rgb(30, 144, 255);
+        padding: 15px 25px;
+        color:white;
+        border-radius: 15px;
+        display:block;
+        text-align: center;
+        transition: all .2s;
+      }
+      .desc a:hover{
+        background-color: SteelBlue;
+      }
+      .desc a:hover svg{
+        animation : iconjln 1s;
+      }
+</style>
 <div class="col-6 mx-auto" style="margin-top:10%;">
-    <form method='post'>
+    <form action="{% url 'payment' %}" method='POST'>
         {% csrf_token %}
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Name</label>
@@ -11,7 +29,9 @@
           <label for="exampleInputPassword1" class="form-label">Amount</label>
           <input type="number" name="amount" class="form-control" id="exampleInputPassword1">
         </div>
+        <div class="desc">
         <button type="submit" class="btn btn-primary">Pay Now</button>
+        </div>
       </form>
 </div>
 {% endblock %}
