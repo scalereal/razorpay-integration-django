@@ -6,6 +6,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
     path("payment/", views.order_payment, name="payment"),
-    path("success/", views.success, name="success"),
+    path("callback/", views.callback, name="callback"),
 ]
 

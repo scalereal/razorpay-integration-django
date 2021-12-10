@@ -4,10 +4,10 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
     var options = {
-        key: "rzp_test_38aTzDAPFLnH0Y",
-        amount: "500", 
+        key: "{{r_key}}",
+        amount: "{{order.amount}}", 
         currency: "INR",
-        name: "Payment Corp",
+        name: "{{order.name}}",
         description: "Test Transaction",
         image: "https://example.com/your_logo",
         order_id: "{{order.provider_order_id}}",
