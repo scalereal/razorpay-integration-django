@@ -14,8 +14,6 @@ import json
 
 
 def home(request):
-    if request.method == "POST":
-        return render(request, "index.html")
     return render(request, "index.html")
 
 
@@ -23,22 +21,22 @@ def order_payment(request):
     if request.method == "POST":
         name = request.POST.get("name")
         amount = request.POST.get("amount")
-        order = Order.objects.create(name=name, amount=amount)
         client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
-        payment_order = client.order.create(
-            {
-                "amount": int(order.amount) * 100,
-                "currency": "INR",
-                "payment_capture": "1",
-            }
+        razorpay_order = client.order.create(
+            {"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"}
         )
-        order.provider_order_id = payment_order["id"]
+        order = Order.objects.create(
+            name=name, amount=amount, provider_order_id=razorpay_order["id"]
+        )
         order.save()
-        callback_url = "http://" + "127.0.0.1:8000" + "/razorpay/callback/"
         return render(
             request,
             "payment.html",
-            {"callback_url": callback_url, "r_key": RAZORPAY_KEY_ID, "order": order},
+            {
+                "callback_url": "http://" + "127.0.0.1:8000" + "/razorpay/callback/",
+                "razorpay_key": RAZORPAY_KEY_ID,
+                "order": order,
+            },
         )
     return render(request, "payment.html")
 
@@ -48,6 +46,10 @@ def callback(request):
     def verify_signature(response_data):
         client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
         return client.utility.verify_payment_signature(response_data)
+
+    import ipdb
+
+    ipdb.set_trace()
 
     if "razorpay_signature" in request.POST:
         payment_id = request.POST.get("razorpay_payment_id", "")

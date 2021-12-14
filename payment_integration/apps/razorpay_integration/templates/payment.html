@@ -4,12 +4,12 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
     var options = {
-        key: "{{r_key}}",
+        key: "{{razorpay_key}}",
         amount: "{{order.amount}}", 
         currency: "INR",
         name: "{{order.name}}",
         description: "Test Transaction",
-        image: "https://example.com/your_logo",
+        image: "https://imgur.com/NOWiBu9",
         order_id: "{{order.provider_order_id}}",
         callback_url: "{{callback_url}}",
         redirect: true,
