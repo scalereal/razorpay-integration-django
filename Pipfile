@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 razorpay = "*"
+black = "*"
+ipdb = "*"
 
 [dev-packages]
 
