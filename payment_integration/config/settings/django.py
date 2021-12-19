@@ -12,10 +12,15 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import sys
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
+
+base = environ.Path(__file__) - 4
+environ.Env.read_env(env_file=base(".env"))
+env = environ.Env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -115,5 +120,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-RAZORPAY_KEY_ID = "rzp_test_1H47DqlwPoo3Ks"
-RAZORPAY_KEY_SECRET = "sEBkbCuT5uA3nsRgjgVoxLXN"
+RAZORPAY_KEY_ID = env("RAZORPAY_KEY_ID", default="")
+RAZORPAY_KEY_SECRET = env("RAZORPAY_KEY_SECRET", default="")
+
