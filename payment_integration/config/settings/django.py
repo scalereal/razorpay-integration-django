@@ -123,5 +123,3 @@ STATIC_URL = "/static/"
 RAZORPAY_KEY_ID = env("RAZORPAY_KEY_ID", default="")
 RAZORPAY_KEY_SECRET = env("RAZORPAY_KEY_SECRET", default="")
 
-# RAZORPAY_KEY_ID = "rzp_test_CtE3ZLjh5QoN9T"
-# RAZORPAY_KEY_SECRET = "LX6fIXHY5yssno0Oth6Zjvu7"
