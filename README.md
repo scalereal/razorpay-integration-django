@@ -2,7 +2,7 @@
 [![razorpay-checkout-img.png](https://i.postimg.cc/4xVBm1Cr/razorpay-checkout-img.png)](https://postimg.cc/21j4thSw)
 ### In this project Razorpay payment gateway 💳  is integrated with Django by breaking down the whole process into simple steps 🪜.
 - Setting up Razorpay account
-- Store the downloaded API keys in your settings.py file
+- Store the downloaded API keys in your .env file
 - Create the Order Schema
 - Creating Razorpay order
 - Making payment
