@@ -8,7 +8,7 @@
 - Making payment
 - Handling Successful and Failed payment.
 
-:bulb:To generate new API keys🗝️ signup on razorpay.com, visit the dashboard and generate:rocket: the API keys from the settings. Replace🔁 the keys in the settings.py file with these generated keys.
+:bulb:To generate new API keys🗝️ signup on razorpay.com, visit the dashboard and generate:rocket: the API keys from the settings.
 
 
 ## Getting started:
