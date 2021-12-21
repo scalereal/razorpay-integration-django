@@ -14,7 +14,7 @@
 ## Getting started:
 ### Clone this repository:
 ```
-git clone https://github.com/Nishant127/razorpay-integration-django.git
+git clone https://github.com/scalereal/razorpay-integration-django.git
 ```
 ### Install pipenv
 ```
